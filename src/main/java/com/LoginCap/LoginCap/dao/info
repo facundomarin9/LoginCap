@@ -1,0 +1,11 @@
+DAO= Data Access Object
+
+
+Cada clase representa una tabla de la base de datos
+
+@Transactional = Le da la funcionalidad a la clase de poder armar las consultas de sql a 
+la base de datos (Como las arma y ejecuta).
+
+@Repository = Hace referencia al repositorio de la base de datos.
+
+Lombok = reduce los getter y setter
