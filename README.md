@@ -2,7 +2,7 @@
 
 Tecnologías usadas: 
 
-- Java
+- Java 11
 - JavaScript
 - HTML (Basado en una plantilla)
 - Spring Boot
