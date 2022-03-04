@@ -1,4 +1,6 @@
-# loginCap
+# Sistema Login
+
+Pequeño sistema para mostrar usuarios, registrarse y loguearse. Uso de JWT para el inicio de sesion.
 
 Tecnologías usadas: 
 
