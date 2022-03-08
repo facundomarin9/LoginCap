@@ -7,7 +7,7 @@ $(document).ready(function(){
 async function startedSession(){
     
     let datos= {};
-    datos.email = document.getElementById('boxInputEmail').value;
+    datos.correo = document.getElementById('boxInputEmail').value;
     datos.password = document.getElementById('boxInputPassword').value;
     
    
@@ -27,7 +27,7 @@ async function startedSession(){
     if(respuesta != 'FAIL'){
         
         localStorage.token = respuesta;
-        localStorage.email = datos.email;
+        localStorage.correo = datos.correo;
         window.location.href = 'usuarios.html'
  
     }else{

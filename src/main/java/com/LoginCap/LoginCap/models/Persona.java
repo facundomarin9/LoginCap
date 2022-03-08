@@ -12,38 +12,31 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 import lombok.Getter;
 import lombok.Setter;
-
 /**
  *
  * @author rauux1
  */
+
 @Entity
-@Table(name ="usuario")
-public class Usuario {
+@Table(name="persona")
+public class Persona {
     
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Getter @Setter @Column(name ="idusuario")
+    @Getter @Setter @Column(name = "idpersona")
     private Long id;
     
-    @Getter @Setter @Column(name ="nick")
-    private String nick;
+    @Getter @Setter @Column(name = "nombre")
+    private String nombre;
     
-    @Getter @Setter @Column(name ="correo")
-    private String correo;
+    @Getter @Setter @Column (name = "apellido")
+    private String apellido;
     
-    @Getter @Setter @Column(name ="password")
-    private String password;
+    @Getter @Setter @Column (name = "telefono")
+    private String telefono;
     
-    @Getter @Setter @Column(name ="persona_idpersona")
-    private Long persona_idpersona;
-    
-    @Getter @Setter @Column(name ="rol_idrol")
-    private Long rol_idrol;
-//    @Getter @Setter @Column(name ="usernick")
-//    private String usernick;
-
-   
+    @Getter @Setter @Column (name = "pais_idpais")
+    private Long pais_idpais;
     
     
 }

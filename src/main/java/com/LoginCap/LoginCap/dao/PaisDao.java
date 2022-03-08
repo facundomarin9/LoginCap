@@ -4,25 +4,15 @@
  */
 package com.LoginCap.LoginCap.dao;
 
-import com.LoginCap.LoginCap.models.Persona;
-import com.LoginCap.LoginCap.models.Usuario;
+import com.LoginCap.LoginCap.models.Pais;
 import java.util.List;
 
 /**
  *
  * @author rauux1
  */
-public interface UsuarioDao {
+public interface PaisDao {
     
-    List <Usuario> getUsuarios();
-    
-
-    void eliminar(long id);
-   
-    void registrar(Usuario usuario);
-    
-    
-    
-    Usuario getCredenciales(Usuario usuario);
+    List<Pais> getPaises();
     
 }

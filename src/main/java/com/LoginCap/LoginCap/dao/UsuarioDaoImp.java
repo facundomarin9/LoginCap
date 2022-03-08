@@ -4,6 +4,7 @@
  */
 package com.LoginCap.LoginCap.dao;
 
+import com.LoginCap.LoginCap.models.Persona;
 import com.LoginCap.LoginCap.models.Usuario;
 import de.mkammerer.argon2.Argon2;
 import de.mkammerer.argon2.Argon2Factory;
@@ -36,16 +37,30 @@ public class UsuarioDaoImp implements UsuarioDao{
     
     
     }
+    
+    
 
     @Override
     public void eliminar(long id) {
+        
         Usuario usuario = entityManager.find(Usuario.class, id);
+        long idpersona = usuario.getPersona_idpersona();
+        Persona persona = entityManager.find(Persona.class, idpersona);
         entityManager.remove(usuario);
-
+        entityManager.remove(persona);
+        
+        
+   
     }
+    
+    
+    
+    
+
 
     @Override
     public void registrar(Usuario usuario) {
+        
         
         entityManager.merge(usuario);
         
@@ -54,9 +69,9 @@ public class UsuarioDaoImp implements UsuarioDao{
     @Override
     public Usuario getCredenciales(Usuario usuario) {
         
-       String query = "FROM Usuario WHERE email = :email"; 
+       String query = "FROM Usuario WHERE correo = :correo"; 
        List<Usuario> lista = entityManager.createQuery(query)
-               .setParameter("email", usuario.getEmail())
+               .setParameter("correo", usuario.getCorreo())
                .getResultList();
        
        if(lista.isEmpty()){
@@ -90,7 +105,9 @@ public class UsuarioDaoImp implements UsuarioDao{
        
     
     }
-    
+
+   
+
     
     
     

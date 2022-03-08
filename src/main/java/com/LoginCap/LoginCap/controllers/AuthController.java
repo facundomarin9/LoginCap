@@ -36,12 +36,12 @@ public class AuthController {
     public String login(@RequestBody Usuario usuario) throws IOException, ServletException{
         
         Usuario userLoggeado= usuarioDao.getCredenciales(usuario);
-        
-       if(userLoggeado != null){
+      
+       if(userLoggeado != null){ 
            
-           System.out.println(String.valueOf(userLoggeado.getId()) + " " + userLoggeado.getEmail());
-         String tokenJwt = jwtUtil.create(String.valueOf(userLoggeado.getId()), userLoggeado.getEmail());
-           
+           System.out.println(String.valueOf(userLoggeado.getId()) + " " + userLoggeado.getNick());
+         String tokenJwt = jwtUtil.create(String.valueOf(userLoggeado.getId()), userLoggeado.getNick());
+            
          return tokenJwt;
            
            
