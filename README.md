@@ -14,3 +14,14 @@ Tecnologías usadas:
 - Argon2
 
 IDE: Apache NetBeans
+
+
+Actualizacion: 
+
+- Normalizacion de tablas
+- Login y registro utilizando los nuevos modelos.
+
+Proxima actualizacion:
+
+-Corregir usuarios 
+-Corregir detalles
