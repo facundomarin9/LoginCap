@@ -1,7 +1,7 @@
 $(document).ready(function(){
     
     getCountries();
-    traerUltIdPer();
+    
 });
 
 async function getCountries(){
@@ -78,21 +78,21 @@ async function registrarUsuario(){
     
     
     
-    //window.location.href= 'login.html';
+    window.location.href= 'login.html';
     
 }
 
-async function traerUltIdPer(){
-    const request = await fetch('api/personasid',{
-         method: 'GET',
-        headers: {
-            'Accept':'application/json',
-            'Content-Type': 'application/json'
-        }
-        
-    });
-    
-    const ultIdPer = await request.json();
-    
-    console.log(ultIdPer);
-}
+//async function traerUltIdPer(){
+//    const request = await fetch('api/personasid',{
+//         method: 'GET',
+//        headers: {
+//            'Accept':'application/json',
+//            'Content-Type': 'application/json'
+//        }
+//        
+//    });
+//    
+//    const ultIdPer = await request.json();
+//    
+//    
+//}

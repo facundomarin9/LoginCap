@@ -77,8 +77,11 @@ async function eliminarUsuario(id){
        
   const request = await fetch('api/usuarios/'+id, {
     method: 'DELETE',
-    headers:getHeaders(),
-   
+    headers: {
+      'Accept': 'application/json',
+      'Content-Type': 'application/json',
+      'Authorization': localStorage.token
+   }
   });
  
  location.reload();
@@ -99,7 +102,7 @@ function getHeaders(){
 function setEmailUser(){
     
     
-    document.getElementById('user_name_xxx').outerHTML = localStorage.email;
+    document.getElementById('user_name_xxx').outerHTML = localStorage.correo;
     
     
 }
