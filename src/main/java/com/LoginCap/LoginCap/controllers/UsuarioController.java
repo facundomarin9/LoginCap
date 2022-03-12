@@ -37,7 +37,7 @@ public class UsuarioController {
     private UsuarioDao usuarioDao;
     @Autowired
     private PersonaDao personaDao;
-    
+
     @Autowired
     private JWTUtil jwtUtil;
 
@@ -55,19 +55,37 @@ public class UsuarioController {
 //        return usuario; 
 //
 //    }
-
     @RequestMapping(value = "api/usuarios", method = RequestMethod.GET)//Seteamos el nombre de la ruta
-    public List<Usuario> getUsuarios (@RequestHeader(value = "Authorization") String token){ 
+    public List<Usuario> getUsuarios(@RequestHeader(value = "Authorization") String token) {
 
-       if(!validateToken(token)){return null;}
+        if (!validateToken(token)) {
+            return null;
+        }
 
         return usuarioDao.getUsuarios();
 
     }
-     @RequestMapping(value = "api/personas", method = RequestMethod.GET)//Seteamos el nombre de la ruta
-    public List<Persona> getPersona (@RequestHeader(value = "Authorization") String token){
 
-       if(!validateToken(token)){return null;}
+    @RequestMapping(value = "api/usuarios/{id}", method = RequestMethod.GET)
+    public List<Usuario> getOneUser(@PathVariable long id) {
+
+        return usuarioDao.getUserId(id);
+
+    }
+
+    @RequestMapping(value = "api/personas/{id}", method = RequestMethod.GET)
+    public List<Persona> getOnePerson(@PathVariable long id) {
+
+        return personaDao.getPersonId(id);
+
+    }
+
+    @RequestMapping(value = "api/personas", method = RequestMethod.GET)//Seteamos el nombre de la ruta
+    public List<Persona> getPersonas(@RequestHeader(value = "Authorization") String token) {
+
+        if (!validateToken(token)) {
+            return null;
+        }
 
         return personaDao.getPersona();
 
@@ -75,26 +93,33 @@ public class UsuarioController {
 
     @RequestMapping(value = "api/usuarios/{id}", method = RequestMethod.DELETE)
     public void eliminar(@PathVariable long id) { //) String token,
-       
-        
+
         usuarioDao.eliminar(id);
 
     }
-    
-    
-  
-    
-    
-    @RequestMapping(value = "api/personasid", method = RequestMethod.GET)
-    public List<Long> getUltIdPer(){
-     
-    return personaDao.getId();
+
+    @RequestMapping(value = "api/usuarios/{id}", method = RequestMethod.PUT)
+    public void editarUsuario(@PathVariable long id, @RequestBody Usuario usuario) {
+
+        usuarioDao.editarUsuario(id, usuario);
+
     }
     
+    @RequestMapping(value = "api/personas/{id}", method = RequestMethod.PUT)
+    public void editarPersona(@PathVariable long id, @RequestBody Persona persona) {
+
+        personaDao.editarPersona(id, persona);
+
+    }
+
+    @RequestMapping(value = "api/personasid", method = RequestMethod.GET)
+    public List<Long> getUltIdPer() {
+
+        return personaDao.getId();
+    }
+
     @RequestMapping(value = "api/personas", method = RequestMethod.POST)
     public void agregar(@RequestBody Persona persona) {
-
-       
 
         personaDao.registrar(persona);
 
@@ -112,7 +137,6 @@ public class UsuarioController {
         usuario.setPassword(hash);
         usuario.setRol_idrol(2l);
         usuario.setPersona_idpersona(personaDao.getId().get(0));
-        
 
         usuarioDao.registrar(usuario);
 

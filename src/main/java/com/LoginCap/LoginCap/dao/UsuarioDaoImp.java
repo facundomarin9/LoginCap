@@ -94,16 +94,28 @@ public class UsuarioDaoImp implements UsuarioDao{
       
       return null;
                         
-//    if(lista.isEmpty()){
-//    
-//        return false;
-//        
-//    }else{
-//    return true;
-//    }
                
        
     
+    }
+
+    @Override
+    public List<Usuario> getUserId(long id) {
+        
+        String query = "FROM Usuario WHERE idusuario = :id";
+       List<Usuario> lista = entityManager.createQuery(query)
+               .setParameter("id", id)
+               .getResultList();
+       
+        return lista;
+        
+    }
+
+    @Override
+    public void editarUsuario(long id, Usuario usuario) {
+        
+        entityManager.merge(usuario);
+        
     }
 
    

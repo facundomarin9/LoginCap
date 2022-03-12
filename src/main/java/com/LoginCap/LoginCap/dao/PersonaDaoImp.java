@@ -5,6 +5,7 @@
 package com.LoginCap.LoginCap.dao;
 
 import com.LoginCap.LoginCap.models.Persona;
+import com.LoginCap.LoginCap.models.Usuario;
 import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -49,6 +50,28 @@ public class PersonaDaoImp implements PersonaDao {
         return entityManager.createQuery(query).getResultList();
         
     }
+
+    @Override
+    public List<Persona> getPersonId(long id) {
+        
+        String query = "FROM Persona WHERE idpersona = :id";
+       List<Persona> lista = entityManager.createQuery(query)
+               .setParameter("id", id)
+               .getResultList();
+       
+        return lista;
+        
+    }
+
+    @Override
+    public void editarPersona(long id, Persona persona) {
+        
+       
+        entityManager.merge(persona);
+                
+        
+    }
+    
     
     
     

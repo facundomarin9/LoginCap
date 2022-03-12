@@ -21,8 +21,10 @@ public interface UsuarioDao {
    
     void registrar(Usuario usuario);
     
-    
+    List<Usuario> getUserId(long id);
     
     Usuario getCredenciales(Usuario usuario);
+    
+    void editarUsuario(long id, Usuario usuario);
     
 }

@@ -16,6 +16,10 @@ public interface PersonaDao {
     List <Persona> getPersona();
     
     void registrar(Persona persona);
-    List<Long> getId();
     
+    List<Long> getId();
+
+    List<Persona> getPersonId(long id);
+    
+    void editarPersona(long id, Persona persona);
 }
